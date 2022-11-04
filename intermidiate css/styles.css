@@ -2,30 +2,38 @@ body,h1{
     margin: 0;
     padding: 0;
     text-align: center;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 .top-container{
     background-color: rgb(193, 226, 255);
-    
+    position: relative;
 }
 .middle-container{
-    background-color: aquamarine;
-    height: 200px;
-    width: 200px;   
+     
 }
 .bottom-container{
-    background-color: aqua;
-    height: 200px;
-    width: 200px;
+   
    
 }
 .top-cloud,.bottom-cloud{
     position: absolute;
 }
 h1{
-    padding-top: 120px;
+    padding-top:100px;
     
+    font-family: 'Nabla', cursive;
+    
+}
+h2{
+    font-family: 'Dosis', sans-serif;
+}
+h3{
+    font-family: 'Dosis', sans-serif;
 }
 .top-cloud{
     right: 430px;
     top: 50px;
+}
+.bottom-cloud{
+    bottom: 300px;
 }
