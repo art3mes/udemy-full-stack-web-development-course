@@ -98,10 +98,13 @@ a{
 }
 .footer-link{
     margin-left: 20px;
-    color: #53f1f7;
+    color:#11999E;
 }
 .meet{
     width: 55px;
     margin-bottom: -18px;
     margin-left: 20px;
+}
+.footer-link:hover{
+    color: #53f1f7;
 }
