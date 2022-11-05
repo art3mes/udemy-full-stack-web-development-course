@@ -7,30 +7,42 @@ body{
     background-color: rgb(193, 226, 255);
     position: relative;
     padding-top: 100px;
+    padding-bottom: 0;
 }
 .middle-container{
-     
+     padding-top: 30px;
 }
 .bottom-container{
-   
-   
+    margin-top: 50px;
+   background-color: #66BFBF;
+   height: 150px;
+   padding-top: 50px;
+   font-size: 20px;
 }
 .top-cloud,.bottom-cloud{
     position: absolute;
 }
 h1{
-    
+    color: #66bfbf;
     font-size: 90px;
     font-family: 'Nabla', cursive;
     margin: 50px auto 10px auto;
+    line-height: 2;
     
 }
 h2{
+    color: #66bfbf;
     font-family: 'Dosis', sans-serif;
     font-size: 2.5rem;
+    font-weight: 400;
 }
 h3{
+    color: #11999e;
     font-family: 'Dosis', sans-serif;
+}
+a{
+    color: #11999E;
+    text-decoration: none;
 }
 .top-cloud{
     right: 430px;
@@ -38,4 +50,58 @@ h3{
 }
 .bottom-cloud{
     bottom: 300px;
+}
+.skill-row{
+    width: 50%;
+    margin: 100px auto ;
+    text-align:left ;
+    line-height: 2;
+}
+.img1{
+    width: 25%;
+    float: left;
+    margin-right: 30px;
+}
+.img2{
+    width: 25%;
+    float: right;
+    margin-left: 30px;
+}
+.profile p{
+    width: 65%;
+    margin: 0 auto 0 auto;
+    line-height: 1.5;
+}
+.hr-line{
+    padding-top: 30px;
+    width: 15px;
+}
+.vote{
+    width: 100px;
+    font-size: 16px;
+    padding:5px;
+    color: red;
+    background-color: cyan;
+    font-weight: 700;
+    font-family: 'Dosis', sans-serif;;
+    border-style:none;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    border-width: 1px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    transition: box-shadow 0.13s, transform 0.13s;
+}
+.vote:hover{
+    box-shadow:none;
+    transform: translate(2px, 2px);
+    cursor: pointer;
+}
+.footer-link{
+    margin-left: 20px;
+    color: #53f1f7;
+}
+.meet{
+    width: 55px;
+    margin-bottom: -18px;
+    margin-left: 20px;
 }
