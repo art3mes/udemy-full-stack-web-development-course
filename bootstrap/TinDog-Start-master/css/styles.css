@@ -1,12 +1,46 @@
 #title{
-    background-color: rgb(43, 166, 125);
+    background-color:rgb(230, 72, 98);
+
+}
+body{
+    font-family:'Montserrat', sans-serif ;
+   
 }
 h1{
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 3rem;
+    font-size: 3.5rem;
     line-height: 1.5;
 }
 .container-fluid{
     padding: 3% 15%;
+}
+.btn{
+    margin:5% 3% 5% 3% ;
+}
+.btn img{
+    margin-top: -6.5px;
+    margin-right: 4px;
+}
+.navbar{
+    padding: 0 0 4.5rem;
+}
+.navbar-brand{
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family:"Ubuntu" ;
+}
+.nav-link{
+    margin-right: 40px;
+    font-family: "Montserrat" ;
+    font-weight: 100;
+}
+.meet{
+    color: white;
+    margin-left: 15px;
+}
+.iphone{
+    width: 60%;
+    transform:rotate(30deg);
+    
 }
