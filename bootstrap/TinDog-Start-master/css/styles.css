@@ -44,3 +44,27 @@ h1{
     transform:rotate(30deg);
     
 }
+#features{
+   padding: 7% 15% ; 
+}
+
+.feat{
+    text-align: center;
+    padding: 4%;
+}
+.feat h3{
+    font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+.feat p{
+    color: #8f8f8f;
+}
+.feat img{
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.13s;
+}
+.feat:hover img{
+    opacity: 2;
+}
