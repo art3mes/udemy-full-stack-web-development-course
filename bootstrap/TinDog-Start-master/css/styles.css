@@ -4,7 +4,7 @@
 }
 body{
     font-family:'Montserrat', sans-serif ;
-   
+   padding-bottom: 3000px;
 }
 h1{
     font-family: 'Montserrat', sans-serif;
@@ -97,4 +97,38 @@ h2{
 }
 .carousel-item{
     padding: 5% 15%;
+}
+.price{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c6c6c6;
+    border-radius: 5px;
+    
+    padding: 0;
+    margin-right: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.card-title{
+    background-color: #c6c6c6;
+   
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 30px 30px 20px 30px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #adadad;
+    
+}
+.card-body{
+    padding: 30px   ;
+    margin: 0;
+}
+.card-body button{
+    width: 95%;
+    margin: 0;
+}
+#pricing{
+    padding: 100px;
+    text-align: center;
 }
