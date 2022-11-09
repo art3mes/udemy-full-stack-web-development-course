@@ -14,7 +14,7 @@ h1{
 }
 h2{
     font-family: "Montserrat";
-    font-weight: 900;
+    font-weight: 700;
     line-height: 4rem;
     font-size: 3rem;
 }
@@ -76,7 +76,7 @@ h2{
 }
 
 #testimonials{
-    padding: 5% 15%;
+    
     text-align: center;
     background-color:rgb(224, 86, 109);
     color: white;
@@ -94,4 +94,7 @@ h2{
 .press-img{
     width: 15%;
     margin: 20px 20px 50px;
+}
+.carousel-item{
+    padding: 5% 15%;
 }
