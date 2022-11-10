@@ -1,5 +1,7 @@
 #title{
     background-color:rgb(230, 72, 98);
+    position: relative;
+    
 
 }
 body{
@@ -19,7 +21,7 @@ h2{
     font-size: 3rem;
 }
 .container-fluid{
-    padding: 3% 15%;
+    padding: 3% 15% 5%;
 }
 .btn{
     margin:5% 3% 5% 3% ;
@@ -46,12 +48,18 @@ h2{
     margin-left: 15px;
 }
 .iphone{
-    width: 60%;
+    width: 300px;
     transform:rotate(30deg);
+    position: absolute;
+    right: 400px;
     
 }
 #features{
    padding: 7% 15% ; 
+   background-color: white;
+   position: relative;
+   
+  
 }
 
 .feat{
