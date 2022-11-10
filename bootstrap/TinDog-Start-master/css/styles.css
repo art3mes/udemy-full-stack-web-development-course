@@ -140,3 +140,15 @@ h2{
     padding: 100px;
     text-align: center;
 }
+
+@media (max-width:1327px)
+{
+    #title{
+        text-align: center;
+    }
+    .iphone{
+        position:static;
+        display: inline-block;
+        transform: rotate(0);
+    }
+}
