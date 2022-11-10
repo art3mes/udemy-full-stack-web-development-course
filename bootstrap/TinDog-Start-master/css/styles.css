@@ -6,7 +6,7 @@
 }
 body{
     font-family:'Montserrat', sans-serif ;
-   padding-bottom: 3000px;
+ 
 }
 h1{
     font-family: 'Montserrat', sans-serif;
@@ -151,4 +151,32 @@ h2{
         display: inline-block;
         transform: rotate(0);
     }
+}
+
+#cta{
+    background-color:rgb(224, 86, 109);
+    text-align: center;
+    padding: 7% 20%;
+}
+.cta-head{
+    font-family: "Montserrat";
+    font-weight: 900;
+    color: white;
+    font-size: 3rem;
+}
+#footer{
+    background-color: white;
+    text-align: center;
+    padding-top:7%;
+    padding-bottom: 2%;
+}
+.foot-img{
+    width: 20px;
+    border-radius: 5px;
+    margin: 0 5px 10px ;
+}
+#footer p{
+    color: gray;
+    font-family: "Ubuntu";
+    font-weight: 400;
 }
