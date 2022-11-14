@@ -26,5 +26,40 @@
     step();
     putBeeper();
  }
-       
- 
+
+ // alternate beeper insertion
+function main(){
+    putBeeper();
+    MMB();
+    MMB();
+    ROdd();
+    REven();
+    ROdd();
+    REven();
+     
+ }
+ function MMB()
+ {
+    move();
+    move();
+    putBeeper();
+ }
+ function ROdd()
+ {
+    turnLeft();
+    move();
+    turnLeft();
+    move();
+    putBeeper();
+    MMB();
+    move();
+ }
+ function REven()
+ {
+    turnRight();
+    move();
+    turnRight();
+    putBeeper();
+    MMB();
+    MMB();
+ }
