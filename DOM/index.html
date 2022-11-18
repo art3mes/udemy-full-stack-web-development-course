@@ -8,19 +8,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello</h1>
+    <h1 id="title">Hello</h1>
     <input type="checkbox">
-    <button style="color:red;">Click ME</button>
-    <ul>
-        <li class="list">
+    <button  class="btn" style="color:red;">Click ME</button>
+    <ul id="list">
+        <li class="item">
             <a href="https://www.google.com">Googlio</a>
 
         </li>
-        <li class="list">Second</li>
-        <li class="list">Third</li>     <!--element=document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;  TO SELECT THIS CHILD USING JS-->
+        <li class="item">Second</li>
+        <li class="item">Third</li>     <!--element=document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;  TO SELECT THIS CHILD USING JS-->
     </ul>                               <!--where element is a variable-->
     <!--to change it: document.firstElementChild.lastElementChild.lastElementChild.lastElementChild.innerHTML="lmao"-->
 
     
 </body>
 </html>
+
+<!--document.getElementsByTagName("li");                            plural
+    HTMLCollection(3) [li.list, li.list, li.list]    
+
+    document.getElementsByTagName("li").style.color="purple";     will not work, cause its an array             plural
+    document.getElementsByTagName("li")[2].style.color="purple";      will change the second element of array to purple    
+
+    document.getElementsByTagName("li").length;                         plural
+    output: 3    
+
+    document.getElementsByClassName("btn"); see "Elements" in the code, its plural. so itll return an array.
+    HTMLCollection [button.btn]    
+
+    document.getElementsByClassName("btn")[0].style.backgroundColor="purple"; will work
+    
+    document.getElementById("title");       singular
+    <h1 id=​"title">​Hello​</h1>
+    
+    document.querySelector(" ");        works same as selectors in CSS.
+    TO SELECT LINK IN THE LIST
+    document.querySelector("li a");​ 
+    <a href="https://www.google.com">Googlio</a>        works!
+
+    in case of multiple elements satisfying the criteria,"#list .item", only the first child is selected
+    but to get all, use
+    document.querySelectorAll("#list .item");
+
+    querySelector();
+    querySelectorAll();   ROLLS
+
+    change color of google link to ywellow:
+    document.querySelector(".item a").style.color="yellow";-->
