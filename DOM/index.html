@@ -52,23 +52,36 @@
     document.querySelectorAll("#list .item");
 
     querySelector();
-    querySelectorAll();   ROLLS
+    querySelectorAll();   ROLLS                     
 
     change color of google link to ywellow:
     document.querySelector(".item a").style.color="yellow";
     
     background color of button to yellow:
-    document.querySelector(".btn").style.backgroundColor="pink";
+    document.querySelector(".btn").style.backgroundColor="pink";            
     
     DO NOT DO CSS WITH JAVASCRIPT SMH!!! :(
         
     SO NOW
     
     USE JS AS A SWITCH
-    MAke a CSS class,eg: "lmao", that changes the font color to pink.
+    MAke a CSS class,eg: "lmao", that changes the font color to pink.       
     ADD THAT CLASS TO THE ELEMENT USING JAVASCRIPT!!
     
     document.querySelector("button").classList;   will give a class list on the element button
     document.querySelector("button").classList.add("lmao");   will ass the class to the button element
     document.querySelector("button").classList.remove("lmao"); will remove that class
-    document.querySelector("button").classList.toggle("lmao");   will toggle, like dark and light mode buttons! -->
+    document.querySelector("button").classList.toggle("lmao");   will toggle, like dark and light mode buttons!
+
+    document.querySelector("h1").innerHTML="<em>OK</em>";                           change everything in that html tags
+    ouput: '<em>OK</em>'            this will just change the inner html with "code". result is an italic OK
+
+    document.querySelector("h1").textContent="<em>lol</em>";                        target text
+    output: '<em>lol</em>'          this will only change the text. the ouptut is literally <em>lol</em> . 
+
+    attributes: href, class, src,etc.
+    document.querySelector("a");    <a href="https://www.google.com">Googlio</a>
+    document.querySelector("a").attributes;     NamedNodeMap {0: href, href: href, length: 1}
+    document.querySelector("a").getAttribute("href");       'https://www.google.com'
+    document.querySelector("a").setAttribute("href","www.youtube.com");     click and get rickrolled.
+-->
