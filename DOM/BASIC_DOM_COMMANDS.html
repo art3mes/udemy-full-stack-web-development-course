@@ -93,5 +93,13 @@
     EVENT listeners
 
     document.querySelector().addEventListener("type", listener )    sets up a function to be called whenever the specified event is delivered to the target
-    "       target          " ⬆                          type=what type of event;       listener= the target function
--->
+    "       target          " ⬆                          type=what type of event;       listener= the target function ()<- do not add that
+                                                                                                                or itll call the function
+    Example: document.querySelector("button").addEventListener("click",handler);
+    where: function handler(){
+        alert("ok");
+    }
+    or else:
+    document.querySelector("button").addEventListener("click", function (){
+        alert("ok");                                                            will work same
+    });                                                                                                    -->
