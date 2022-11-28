@@ -17,7 +17,7 @@ footer {
 }
 
 .w {
-
+  
 }
 
 .a {
@@ -72,10 +72,24 @@ footer {
   color: #DA0463;
   text-shadow: 3px 0 #DBEDF3;
   border-radius: 15px;
-  display: inline-block;
+  
   width: 150px;
   height: 150px;
-  text-align: center;
+  
   margin: 10px;
   background-color: white;
+
+  position: relative;
+}
+.drum p{
+  padding: 0;
+  margin: 0;
+  display:inline;
+  position: absolute;
+  left: 50px;
+  
+}
+.drum img{
+  height: 105px;
+  object-fit: contain;
 }
