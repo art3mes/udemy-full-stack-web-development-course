@@ -1,7 +1,6 @@
 function handleClick()
 {
-    // var audio=new Audio("sounds/snare.mp3");
-    // audio.play();
+    this.style.color="white";     //change color of each text to white
 
 }
 
