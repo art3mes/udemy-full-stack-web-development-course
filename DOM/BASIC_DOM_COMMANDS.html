@@ -114,10 +114,16 @@
         yearOfExperience=12,
         name="Jabe",
         workExpertise=["bedroom","lobby","bathroom"]
+        moveSuitCase= function () {                        a function
+            alert("gimme the case, boy");
+            takeSuitCase();
+            move();
+        }
     }
     to call:
     houseKeeper                    will give all
     houseKeeper.name               will give Jabe
+    housekeeper1.moveSuitCase();
 
     Constructor Function
 
@@ -127,10 +133,19 @@
         this.age=age;
         this.experience=experience;
         this.array=array;
+        this.takeLuggage= function() {
+            alert("gimme the load");
+            take();
+            keep();
+        }
     }
     var housekeeper1=new HouseKeeper("lmao",19,true,["ok",1,"ko"]);
 
     console.log(housekeeper1.name);
     output= lmao
 
+    housekeeper1.takeLuggage();
+    output:
+    an alert
+    then function works..
 -->
