@@ -2,16 +2,25 @@
 // be specific in the class name. adding "button" will just loop through all the buttons in the document;   
 //for(var a=0;a<7;a++) {}            itll also work ;)
 
+//handle click 
 for(var a=0;a<document.querySelectorAll(".drum").length;a++)
 {
-    document.querySelectorAll("button")[a].addEventListener("click",handleClick);   
+    document.querySelectorAll("button")[a].addEventListener("click", function(){
+        var buttonValue=this.innerHTML;         //this.style.color="white";     change color of each text to white
+        handleClick(buttonValue);
+    });   
 }
-function handleClick(event)
-{
-    //this.style.color="white";     change color of each text to white
-    var buttonValue=this.innerHTML;
 
-    switch (buttonValue) {
+//handle keyboard press
+document.addEventListener("keydown",function(button_pressed){
+    var key_press=button_pressed.key;
+    handleClick(key_press);
+});
+
+//sound function
+function handleClick(stimulus)
+{
+    switch (stimulus) {
         case "w":
             var tom1=new Audio("sounds/tom-1.mp3");
             tom1.play();
@@ -47,7 +56,6 @@ function handleClick(event)
     }
 }
 
-document.addEventListener("keydown",handleClick(event));
 
 
 
