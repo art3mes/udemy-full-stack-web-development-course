@@ -20,7 +20,7 @@ document.addEventListener("keydown",function(button_pressed){
 //sound function
 function handleClick(stimulus)
 {
-    switch (stimulus) {
+    switch (stimulus.toLowerCase()) {
         case "w":
             var tom1=new Audio("sounds/tom-1.mp3");
             tom1.play();
