@@ -6,7 +6,7 @@ for(var a=0;a<document.querySelectorAll(".drum").length;a++)
 {
     document.querySelectorAll("button")[a].addEventListener("click",handleClick);   
 }
-function handleClick()
+function handleClick(event)
 {
     //this.style.color="white";     change color of each text to white
     var buttonValue=this.innerHTML;
@@ -43,11 +43,11 @@ function handleClick()
     
         default:
             console.log(buttonValue);
-            break;
+              break;
     }
 }
 
-
+document.addEventListener("keydown",handleClick(event));
 
 
 

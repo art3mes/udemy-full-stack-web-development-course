@@ -133,7 +133,7 @@
         this.age=age;
         this.experience=experience;
         this.array=array;
-        this.takeLuggage= function() {
+        this.takeLuggage= function() {                method= takeLuggage
             alert("gimme the load");
             take();
             keep();
@@ -146,6 +146,18 @@
 
     housekeeper1.takeLuggage();
     output:
-    an alert
+    an alert                                almmost same as that audio play thingy
     then function works..
+
+
+
+    key press event listener:
+    
+    document.addEventListener("keydown",function(){       whole document now listening for key presses
+        alert("kkey pressed");
+    })
+
+    document.addEventListener("keydown",function(event){ 
+        console.log(event);                                     event variable holds the key which was pressed
+    })
 -->
