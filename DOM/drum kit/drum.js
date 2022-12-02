@@ -63,4 +63,8 @@ function buttonAnimations(key_pressed){
     var key_value=document.querySelector("."+key_pressed);
     key_value.classList.add("pressed");
 
+    setTimeout(function(){
+       key_value.classList.remove("pressed"); 
+    }, 100);
+
 }
