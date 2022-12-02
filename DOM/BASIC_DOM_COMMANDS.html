@@ -153,11 +153,45 @@
 
     key press event listener:
     
-    document.addEventListener("keydown",function(){       whole document now listening for key presses
-        alert("kkey pressed");
+    document.addEventListener("keydown",function(){       whole document now listening for key presses  (a higher order function)
+    alert("kkey pressed");                                where funtion() is a callback function
     })
 
     document.addEventListener("keydown",function(event){ 
         console.log(event);                                     event variable holds the key which was pressed
     })
+
+
+    callback functions
+
+    function anotherAddEventListener(typeOfEvent,callback){
+        //Detect event code
+        var eventThatHappened={                                   an object
+            eventType:"keypress";
+            key:"p";
+            durationOfKeypress:2;
+        }
+
+        if (eventThatHappened.eventType===typeOfEvent){
+            callback(eventThatHappened);
+        }
+    }
+
+    now defining an event for above
+    anotherAddEventListener("keypress", function(event){
+        console.log(event);
+    })
+
+    output: 
+    {eventType: "keypress", key:"p", durationOfKeypress:2}              
+
+    
+    another:
+
+    document.addEventListener("keypress",function(event){
+        console.log(event);
+    })
+    upon keypressed k key
+    output: 
+    KeyboardEvent {isTrusted: true, key: 'k', code: 'KeyK', location: 0, ctrlKey: false, …}
 -->
