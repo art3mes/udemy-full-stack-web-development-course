@@ -8,19 +8,21 @@ for(var a=0;a<document.querySelectorAll(".drum").length;a++)
     document.querySelectorAll("button")[a].addEventListener("click", function(){
         var buttonValue=this.innerHTML;         //this.style.color="white";     change color of each text to white
         handleClick(buttonValue);
+        buttonAnimations(buttonValue);
     });   
 }
 
 //handle keyboard press
 document.addEventListener("keydown",function(button_pressed){
-    var key_press=button_pressed.key;
+    var key_press=button_pressed.key.toLowerCase();
     handleClick(key_press);
+    buttonAnimations(key_press);
 });
 
 //sound function
 function handleClick(stimulus)
 {
-    switch (stimulus.toLowerCase()) 
+    switch (stimulus) 
     {
         case "w":
             var tom1=new Audio("sounds/tom-1.mp3");
@@ -57,8 +59,8 @@ function handleClick(stimulus)
     }
 }
 
+function buttonAnimations(key_pressed){
+    var key_value=document.querySelector("."+key_pressed);
+    key_value.classList.add("pressed");
 
-
-
-
-
+}
