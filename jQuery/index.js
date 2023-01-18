@@ -11,9 +11,12 @@ console.log($("h1").css("color"));                            /*will get the col
 
 $("h1").css("color","blue");                               /*will change the color*/
 
+$("class-selector").text("new to text to replace old one with");     /*will write <> tags as it is*/
+$("class-selector").html("new text to replace old one.  can inject code lol");      /*same as innerHTML. can use tags to change */
 
-
-
+$("img").attr("src");     /*will give source attribute of the img file*/
+$("a").attr("href","http://www.yahoo.com");            /*will change the href attribute of "a" tag*/
+$("h1").attr("class");                                     /*will give classes applied to h1 tag*/
 
 
 
