@@ -18,6 +18,25 @@ $("img").attr("src");     /*will give source attribute of the img file*/
 $("a").attr("href","http://www.yahoo.com");            /*will change the href attribute of "a" tag*/
 $("h1").attr("class");                                     /*will give classes applied to h1 tag*/
 
+/*for(var a=0; a<document.querySelectorAll("button").length;a++){
+    document.querySelectorAll("button")[a].addEventListener("click",function(){
+        document.querySelector("h1").style.color="purple";
+    });
+}*/
 
+$("button").click(function (){
+    $("h1").css("color","pink");                      /*both are doing the same job*/
+});
 
+$("input").keypress(function(event){         /*change input to document to log any keypresses*/
+    console.log(event.key);                               /*gives the key pressed in the input tag*/
+});
+
+$(document).keypress(function(event){
+    $("h1").text(event.key);                 /*will change the h1 to any key pressed*/
+});
+
+$("h1").on("mouseover", function(){           /*other way to add event listeners*/
+    $("h1").css("color","gray");            
+});
 });                                                   
