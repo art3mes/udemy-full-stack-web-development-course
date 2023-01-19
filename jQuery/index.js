@@ -39,4 +39,27 @@ $(document).keypress(function(event){
 $("h1").on("mouseover", function(){           /*other way to add event listeners*/
     $("h1").css("color","gray");            
 });
+$("classs").remove();           /*to remove all class named classs*/
+
+$("button").on("click",function(){
+    // $("h1").hide();
+    // $("h1").show();
+
+    //$("h1").toggle();          /*toggle hide and show methods*/
+    // $("h1").fadeOut();
+    // $("h1").fadeIn();
+
+    // $("h1").fadeToggle();     toggle fade in and faade out
+
+    // $("h1").slideUp();
+    // $("h1").slideDown();
+
+    //$("h1").slideToggle();            toggle slide up and slide down
+
+    //$("classname").animate({property});         property should be having numeric value like opacity or margin or else.
+
+                                                //cannot be like color.
+    $("h1").slideUp().slideDown().animate({fontSize:"50px"});            //voila                               
+})
+             
 });                                                   
