@@ -24,7 +24,7 @@ $("h1").attr("class");                                     /*will give classes a
     });
 }*/
 
-$("button").click(function (){
+$("button").click(function (){                                         //try adding a dot before class name if its not working
     $("h1").css("color","pink");                      /*both are doing the same job*/
 });
 
