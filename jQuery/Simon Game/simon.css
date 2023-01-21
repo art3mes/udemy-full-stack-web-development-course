@@ -1,13 +1,18 @@
 body{
     background-color: rgb(4, 7, 45);
+    text-align: center;
 }
 .title{
     font-family: 'Press Start 2P', cursive;
     color: #FEF2BF;
+    margin-top: 3rem;
 }
 .container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2,220px);
+    gap: 25px 25px;
+    justify-content: center;
+    margin-top: 4rem;
 }
 .btn{
     height: 200px;
