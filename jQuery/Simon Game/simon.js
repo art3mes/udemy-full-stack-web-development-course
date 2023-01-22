@@ -5,12 +5,12 @@ var gameStarter=0;
 var level=0;
 
 function nextSequence(){
-    level++;
+    
+    userClickedPattern=[];
     var randomChosenColor=buttonColors[Math.floor(Math.random()*4)];
     gamePattern.push(randomChosenColor);
     $("#"+randomChosenColor).fadeOut(180).fadeIn(180);
-    playSound(randomChosenColor);
-    
+    playSound(randomChosenColor);  
 }
 function playSound(name){
     var audio = new Audio('sounds/'+name+'.mp3');
@@ -20,20 +20,54 @@ function animatePress(currentColor){
     $("."+currentColor).addClass("pressed");
     setTimeout(function(){
         $('.'+currentColor).removeClass('pressed');
-    },150);
+    },100);
 }
-$(".btn").click(function(event){
+$(".btn").click(function(event){                                            //will work when user will press a button
     var userChosenColor=event.target.id;
     userClickedPattern.push(userChosenColor);
-    console.log(userClickedPattern);
+
     playSound(userChosenColor);
     animatePress(userChosenColor);
+    answerChecker();
 });
-$(document).keypress(function(event){
+
+function answerChecker(){
+        if(level===(userClickedPattern.length-1)){
+            var judge=arrayComparator(gamePattern,userClickedPattern);
+            if(judge===true){
+                $("h1").text("Level "+level);
+                level++;
+                setTimeout(nextSequence, 700); 
+            }
+            else{
+                console.log(false);
+            }
+    }  
+}
+$(document).keypress(function(event){                                    //starting the game. first keypress
     if((event.key=="a"||event.key=="A") && gameStarter=="0"){
-        $("h1").text("Level "+level);
         nextSequence();
         gameStarter=1;
     }
 }); 
-
+function arrayComparator(array1,array2){                                 //array comparator
+    var l1=array1.length;
+    var l2=array2.length;
+    var counter=0;
+    if(l1!=l2){
+        return false;
+    }
+    else{
+        for(var a=0;a<l1;a++){
+            if(array1[a]!=array2[a]){
+                counter=1;
+            }
+        }
+        if(counter==1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+}

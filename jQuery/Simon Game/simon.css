@@ -22,7 +22,7 @@ body{
     border-color: rgb(10, 54, 54);
     border-radius: 2rem;
     box-shadow: 8px 4px 8px;
-    transition: all 0.18s;
+    transition: all 0.15s;
 }
 .red{
     background-color: red;
