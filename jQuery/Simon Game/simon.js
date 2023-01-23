@@ -1,12 +1,11 @@
 var buttonColors=["red","blue","green","yellow"];
 var gamePattern= [];
 var userClickedPattern=[];
-var gameStarter=0;
+var gameStarter=false;
 var level=0;
 var counter=0;
 
-function nextSequence(){ 
-    
+function nextSequence(){
     userClickedPattern=[];
     var randomChosenColor=buttonColors[Math.floor(Math.random()*4)];
     gamePattern.push(randomChosenColor);
@@ -14,8 +13,8 @@ function nextSequence(){
     playSound(randomChosenColor);  
 }
 function playSound(name){
-    // var audio = new Audio('sounds/'+name+'.mp3');
-    // audio.play();
+    var audio = new Audio('sounds/'+name+'.mp3');
+    audio.play();
 }
 function animatePress(currentColor){
     $("."+currentColor).addClass("pressed");
@@ -52,29 +51,21 @@ function answerChecker(){
         setTimeout(function(){
             $("body").removeClass("game-over");
         },200);
-        $("h1").text("Game Over, Press Any Key to Restart");
-        
+        $("h1").text("Game Over, Press A to Restart");
+        startOver();
     }
 }
-// function startOver(){
-//     console.log("inside startover");
-    
-//     if(gameStarter!=1){
-//         $(document).keypress(function(){
-//             level=0;
-//             gamePattern=[];
-//             userClickedPattern=[];
-//             gameStarter=1;   
-//             nextSequence();  
-//         });         
-//     }
-// }  
+function startOver(){   
+    gameStarter=false;
+}  
 
 $(document).keypress(function(event){                                    //starting the game. first keypress
-    if((event.key=="a"||event.key=="A") && gameStarter==0){
+    if((event.key=="a"||event.key=="A") && (!gameStarter)){
+        level=0;
+        gamePattern=[];
         $("h1").text("Level "+level);
-        nextSequence();
-        gameStarter=1;
+        nextSequence(); 
+        gameStarter=true;
     }
 }); 
 function arrayComparator(array1,array2){                                 //array comparator
