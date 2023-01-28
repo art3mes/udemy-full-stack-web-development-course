@@ -20,6 +20,9 @@ app.get("/about", function(req,res){                    //another route
     res.send("NO.");
 });
 
-app.listen(3000,function(){
+app.get("/hobbies", function(request,response){
+    response.send("<h1>wait, what are those</h1>")
+});
+app.listen(3000,function(){                          //listening to a port numbered 3000 with a callback function
     console.log("server started on Port 3000")
-});                       //listening to a port numbered 3000 with a callback function
+});

@@ -1,0 +1,13 @@
+nodemon is used to automatically refresh your server.
+
+without it, you have to close your server using Ctrl+C and then restart the server using "node filename"
+
+to automate that, install nodemon utility tool.
+install it in any directory and itll work everywhere.
+
+npm install -g nodemon
+
+run it using:
+nodemon filename
+
+itll refresh the server automatically upon any change.
