@@ -35,8 +35,7 @@ app.post("/bmicalculator", function(req,res){
     var bmi=(w/(h*h));
     bmi=Math.round((bmi + Number.EPSILON) * 100) / 100;   // round off to nearest 2 decimal places
     
-    //res.send("Your BMI is: "+bmi);
-    res.send(w+" "+h+" "+bmi);
+    res.send("Your BMI is: "+bmi);
 });
 app.listen(3000, function(){
     console.log("server started at port 3000");
