@@ -1,0 +1,16 @@
+an application programming interface (API) is a set of commands, functions, 
+protocols and objects that programmers can use to create software or interact with an external system.
+
+points to remember while setting up APIs:
+
+Endpoint: every api interacting with an external server has an endpoint.
+
+                     eg: kanye.rest whose endpoint is https://api.kanye.rest
+
+Paths:              endpoint/path
+
+Parameters:     endpoint/path?contains=query          multiple queries separated by &
+
+                    paths and parameters are used to narrow down search results
+
+Authentication:
