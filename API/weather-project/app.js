@@ -1,14 +1,22 @@
-const { ok } = require("assert");
 const express=require ("express");
 const https=require ("https");             // native node module. used to get get requests
-
 const app=express();
+const bodyParser=require("body-parser");
 
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.get("/",function(req,res){
+    res.sendFile(__dirname+"/index.html");
+    
+});
+app.post("/", function(req,res){
+    // console.log(req.body.cityName);
+    const query=req.body.cityName;
+    const appKey="719d71f2bbb18d4b4268ca4c221dd7d9";
+    const metric="metric";
 
-    const url="https://api.openweathermap.org/data/2.5/weather?q=rome&appid=719d71f2bbb18d4b4268ca4c221dd7d9&units=metric";
+    const url="https://api.openweathermap.org/data/2.5/weather?q="+query+"&appid="+appKey+"&units="+metric;
     https.get(url,function(response){           //it gets a response from the send url
         console.log(response.statusCode);               //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
                                                         // 200     ok
@@ -26,8 +34,8 @@ app.get("/",function(req,res){
             const desc=weatherDATA.weather[0].description;
             const icon=weatherDATA.weather[0].icon;
             const imageURL="http://openweathermap.org/img/wn/"+icon+"@2x.png";
-            res.write("<h1>Current temperature in ROME is "+temp+" degrees Celcius</h1>");
-            res.write("<p>The current weather description is "+weatherDATA.weather[0].description+".<p>");
+            res.write("<h1>Current temperature in "+query+" is "+temp+" degrees Celcius</h1>");
+            res.write("<p>The current weather description is "+desc+".<p>");
             res.write("<img src="+imageURL+">");
             res.send();
             //res.write    https text stream response
@@ -37,7 +45,7 @@ app.get("/",function(req,res){
     //res.send("server is running");                          //ONLY ONE res.send in any one of the given app methods
 });
 
-
+    
 
 app.listen(3000,function(){
     console.log("server started on PORT 3000");
