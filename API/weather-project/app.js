@@ -15,17 +15,26 @@ app.get("/",function(req,res){
                                                         // 404     resourse not found
                                                         // 401     unauthorized
         response.on("data",function(data){                  // on function to interact with the recieved data
-           // console.log(data);      // will give the output in the hexadecimal format
-           const weatherDATA= JSON.parse(data);       //will convert the data into a json object
+            // console.log(data);      // will give the output in the hexadecimal format
+            const weatherDATA= JSON.parse(data);       //will convert the data into a json object
             //weatherDATA being the JSON object              
             //JSON.stringify(data);   will convert the json objject to strings (tightly packed)
-            console.log(weatherDATA);   //will print the whole json object
-            console.log("temperature: ",weatherDATA.main.temp);
-            console.log("Description: ",weatherDATA.weather[0].description);
+            // console.log(weatherDATA);   //will print the whole json object
+            // console.log("temperature: ",weatherDATA.main.temp);
+            // console.log("Description: ",weatherDATA.weather[0].description);
+            const temp=weatherDATA.main.temp;
+            const desc=weatherDATA.weather[0].description;
+            const icon=weatherDATA.weather[0].icon;
+            const imageURL="http://openweathermap.org/img/wn/"+icon+"@2x.png";
+            res.write("<h1>Current temperature in ROME is "+temp+" degrees Celcius</h1>");
+            res.write("<p>The current weather description is "+weatherDATA.weather[0].description+".<p>");
+            res.write("<img src="+imageURL+">");
+            res.send();
+            //res.write    https text stream response
 
         });
     });
-    res.send("server is running");
+    //res.send("server is running");                          //ONLY ONE res.send in any one of the given app methods
 });
 
 
