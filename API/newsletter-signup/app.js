@@ -34,17 +34,27 @@ app.post("/", function(req,res){
     const url="https://us18.api.mailchimp.com/3.0/lists/d1c66f90cb";
     const options={
         method:"POST",
-        auth:"reiner1:051b45dcbad1b93e5ac648fe8c797a13-us18"
+        auth:"reiner1:!051b45dcbad1b93e5ac648fe8c797a13-us18"
     };
     const request=https.request(url,options, function(response){          //save value in a constant. then send it to mailchimp server
         response.on("data", function(data){
             console.log(JSON.parse(data));
+            if(response.statusCode===200){
+                res.sendFile(__dirname+"/success.html");
+            }
+            else{
+                res.sendFile(__dirname+"/failure.html");
+            }
         });
     });
     request.write(jsonDATA);
     request.end();
     // console.log(firstName,lastName,email);
 });
+
+app.post("/failure", function(req,res){
+    res.redirect("/");                        //back to the homepage
+})
 
 app.listen(3000, function(){
     console.log("Server is up and running!");
