@@ -10,14 +10,23 @@ app.get("/", function(req,res){
     var today= new Date();
     var currentDay=today.getDay();            // will give index of weekdays. 0 for sunday, 1 for monday.-- 6 for saturday
     var day="";
-    const weekDays={1:"Monday", 2:"Tuesday", 3:"Wednesday", 4:"Thursday", 5:"Friday",6:"Saturday", 0:"Sunday"};
-    // console.log(currentDay);
-    if(currentDay === 6 || currentDay === 0){
-        day=weekDays[currentDay];
-    }
-    else{
-        day=weekDays[currentDay];
-    }
+    // const weekDays={1:"Monday", 2:"Tuesday", 3:"Wednesday", 4:"Thursday", 5:"Friday",6:"Saturday", 0:"Sunday"};
+    var options= {               //JS object for date formatting
+        weekday:'long',             //  weekdays will be written in full form, i.e., Saturday
+        day:'numeric',               // days will be numeric format
+        month: 'long'               // full month names
+    };
+
+    day = today.toLocaleDateString("en-US", options);
+    // console.log(currentDay);                                      works with the past logic/js object weekDays
+    // if(currentDay === 6 || currentDay === 0){
+    //     day=weekDays[currentDay];
+        
+    // }
+    // else{
+    //     day=weekDays[currentDay];
+    //     console.log(day);
+    // }
     res.render("list", {dayPresentinList:day});          //it will render the file "list" present in views folder. and a js object is passed
 });                                                                     // {variableInEJSfile : variableHere}
 
