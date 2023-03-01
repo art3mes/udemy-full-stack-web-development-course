@@ -1,10 +1,11 @@
 const express=require("express");                        //CREATE A views FOLDER. EJS WILL LOOK FOR FILES TO RENDER IN THERE BY DEFAULT
 const bodyParser=require("body-parser");                // file.ejs
-
 const e = require("express");
-
 const app=express();
+app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
+
+var items=["Buy item1", "Buy Item2", "Sell item2"];
 
 app.get("/", function(req,res){
     var today= new Date();
@@ -27,8 +28,15 @@ app.get("/", function(req,res){
     //     day=weekDays[currentDay];
     //     console.log(day);
     // }
-    res.render("list", {dayPresentinList:day});          //it will render the file "list" present in views folder. and a js object is passed
+    res.render("list", {dayPresentinList:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
+                // will have to pass all the variables. it passes whenever home route is loaded
 });                                                                     // {variableInEJSfile : variableHere}
+
+app.post("/",function(req,res){
+    var item=req.body.newItem;
+    items.push(item);
+    res.redirect("/");
+});
 
 app.listen(3000, function(){
     console.log("Server is running!");
