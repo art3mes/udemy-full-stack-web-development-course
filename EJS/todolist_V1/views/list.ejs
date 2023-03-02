@@ -8,21 +8,22 @@
     <title>To Do List</title>
 </head>
 <body>
-<!--     
-  <%  if(dayPresentinList === "Wednesday" || dayPresentinList === "Sunday"){ %>
-        <h1 style="color:bisque">Today is <%= dayPresentinList %> </h1>
-  <%  } else{ %>
-        <h1>TOday is <%= dayPresentinList %></h1>
-<% } %> -->
-      <h1> <%= dayPresentinList %></h1>
-      <ul>
+
+      <div class="box" id="heading">
+            <h1> <%= dayPresentinList %></h1>
+      </div>
+     
+      <div class="box">
             <% for(var a=0;a<itemInTheList.length;a++){ %>
-                  <li> <%= itemInTheList[a] %> </li>
-           <% } %>
-      </ul>
-      <form action="/" method="post">
-            <input type="text" name="newItem">
-            <button type="submit" name="submit">Add</button>
-      </form>
+                  <div class="item">                     
+                        <input type="checkbox" >
+                        <p> <%= itemInTheList[a] %> </p>
+                  </div>
+            <% } %>
+            <form action="/" method="post" class="item">
+                  <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                  <button type="submit" name="button" class="submit" >+</button>
+            </form>            
+      </div> 
 </body>
 </html>
