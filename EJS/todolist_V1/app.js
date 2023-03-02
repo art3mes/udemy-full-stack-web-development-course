@@ -7,6 +7,7 @@ app.set('view engine','ejs');                        // app which is created by 
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
 
 var items=["Buy item1", "Buy Item2", "Sell item2"];
+var work=[];
 
 app.get("/", function(req,res){
     var today= new Date();
@@ -29,16 +30,34 @@ app.get("/", function(req,res){
     //     day=weekDays[currentDay];
     //     console.log(day);
     // }
-    res.render("list", {dayPresentinList:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
+    res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
                 // will have to pass all the variables. it passes whenever home route is loaded
 });                                                                     // {variableInEJSfile : variableHere}
 
 app.post("/",function(req,res){
     var item=req.body.newItem;
-    items.push(item);
-    res.redirect("/");
+    if(req.body.list==="Work"){
+        work.push(item);
+        res.redirect("/work");
+    }
+    else{
+        items.push(item);
+        res.redirect("/");
+    }
 });
 
+app.get("/work", function(req,res){
+    res.render("list", {listTitle:"Work List", itemInTheList:work});
+});
+app.post("/work", function(req,res){
+    var item=req.body.newItem;
+    work.push(item);
+    res.redirect("/work");
+});
+
+app.get("/about", function(req,res){
+    res.render("about");
+});
 app.listen(3000, function(){
     console.log("Server is running!");
 });
