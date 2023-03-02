@@ -4,6 +4,7 @@ const e = require("express");
 const app=express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
+app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
 
 var items=["Buy item1", "Buy Item2", "Sell item2"];
 
