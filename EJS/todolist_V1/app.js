@@ -6,15 +6,15 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
 
-var items=["Buy item1", "Buy Item2", "Sell item2"];
-var work=[];
+let items=["Buy item1", "Buy Item2", "Sell item2"];
+let work=[];
 
 app.get("/", function(req,res){
-    var today= new Date();
-    var currentDay=today.getDay();            // will give index of weekdays. 0 for sunday, 1 for monday.-- 6 for saturday
-    var day="";
+    let today= new Date();
+    //let currentDay=today.getDay();            // will give index of weekdays. 0 for sunday, 1 for monday.-- 6 for saturday
+    let day="";
     // const weekDays={1:"Monday", 2:"Tuesday", 3:"Wednesday", 4:"Thursday", 5:"Friday",6:"Saturday", 0:"Sunday"};
-    var options= {               //JS object for date formatting
+    let options= {               //JS object for date formatting
         weekday:'long',             //  weekdays will be written in full form, i.e., Saturday
         day:'numeric',               // days will be numeric format
         month: 'long'               // full month names
@@ -31,11 +31,11 @@ app.get("/", function(req,res){
     //     console.log(day);
     // }
     res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
-                // will have to pass all the variables. it passes whenever home route is loaded
-});                                                                     // {variableInEJSfile : variableHere}
+                // will have to pass all the letiables. it passes whenever home route is loaded
+});                                                                     // {letiableInEJSfile : letiableHere}
 
 app.post("/",function(req,res){
-    var item=req.body.newItem;
+    let item=req.body.newItem;
     if(req.body.list==="Work"){
         work.push(item);
         res.redirect("/work");
@@ -50,7 +50,7 @@ app.get("/work", function(req,res){
     res.render("list", {listTitle:"Work List", itemInTheList:work});
 });
 app.post("/work", function(req,res){
-    var item=req.body.newItem;
+    let item=req.body.newItem;
     work.push(item);
     res.redirect("/work");
 });
