@@ -8,27 +8,18 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
 
-let items=["Buy item1", "Buy Item2", "Sell item2"];
-let work=[];
+const items=["Buy item1", "Buy Item2", "Sell item2"];    // const array? well yes dipshit. you can push elemenets in it
+const work=[];
 
 app.get("/", function(req,res){
     
-    // console.log(currentDay);                                      works with the past logic/js object weekDays
-    // if(currentDay === 6 || currentDay === 0){
-    //     day=weekDays[currentDay];
-        
-    // }
-    // else{
-    //     day=weekDays[currentDay];
-    //     console.log(day);
-    // }
-    let day=date();       //using the date module i made :)
+    const day=date.getDate();       //using the date module i made :)
     res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
                 // will have to pass all the letiables. it passes whenever home route is loaded
 });                                                                     // {letiableInEJSfile : letiableHere}
 
 app.post("/",function(req,res){
-    let item=req.body.newItem;
+    const item=req.body.newItem;
     if(req.body.list==="Work"){
         work.push(item);
         res.redirect("/work");
@@ -43,7 +34,7 @@ app.get("/work", function(req,res){
     res.render("list", {listTitle:"Work List", itemInTheList:work});
 });
 app.post("/work", function(req,res){
-    let item=req.body.newItem;
+    const item=req.body.newItem;
     work.push(item);
     res.redirect("/work");
 });
