@@ -2,12 +2,13 @@ html {
   background-color: #E4E9FD;
   background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
   min-height: 1000px;
-  font-family: 'helvetica neue';
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 h1 {
   color: #fff;
   padding: 10px;
+  font-family: 'M PLUS 1p', sans-serif;
 }
 
 .box {
@@ -77,6 +78,7 @@ input[type="text"] {
   font-size: 20px;
   font-weight: 200;
   width: 313px;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 input[type="text"]:focus {

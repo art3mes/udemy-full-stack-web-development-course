@@ -8,11 +8,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
 
-const items=["Buy item1", "Buy Item2", "Sell item2"];    // const array? well yes dipshit. you can push elemenets in it
+const items=["Buy apples", "Post the letter", "Get milk"];    // const array? well yes dipshit. you can push elemenets in it
 const work=[];
 
 app.get("/", function(req,res){
-    
+
     const day=date.getDate();       //using the date module i made :)
     res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
                 // will have to pass all the letiables. it passes whenever home route is loaded
