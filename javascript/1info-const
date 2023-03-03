@@ -1,0 +1,18 @@
+const in objects and arrays
+const also works on objects and arrays. Attempting to overwrite the object throws an error "Assignment to constant variable".
+
+const MY_OBJECT = { key: "value" };
+MY_OBJECT = { OTHER_KEY: "value" };
+However, object keys are not protected, so the following statement is executed without problem.
+
+MY_OBJECT.key = "otherValue";
+Copy to Clipboard
+You would need to use Object.freeze() to make an object immutable.
+
+The same applies to arrays. Assigning a new array to the variable throws an error "Assignment to constant variable".
+
+const MY_ARRAY = [];
+MY_ARRAY = ["B"];
+Still, it's possible to push items into the array and thus mutate it.
+
+MY_ARRAY.push("A"); // ["A"]
