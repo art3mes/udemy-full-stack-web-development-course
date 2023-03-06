@@ -19,16 +19,19 @@ app.use(express.static("public"));
 app.get("/",function(req,res){
   res.render("home.ejs", {homeString:homeStartingContent});
 });
-
 app.get("/about", function(req,res){
   res.render("about.ejs", {aboutString:aboutContent});
 });
-
+app.get("/compose", function(req,res){
+  res.render("compose.ejs");
+});
 app.get("/contact", function(req,res){
   res.render("contact.ejs", {contactString:contactContent});
 });
 
-
+app.post("/compose", function(req,res){
+  console.log(req.body.inputText);
+});
 
 
 
