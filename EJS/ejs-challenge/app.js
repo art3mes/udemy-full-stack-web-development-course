@@ -33,7 +33,10 @@ app.get("/contact", function(req,res){
 });
 
 app.post("/compose", function(req,res){
-  const post={title:req.body.inputText, content:req.body.textArea};
+  const post={
+    title:req.body.inputText, 
+    content:req.body.textArea
+  };
   posts.push(post);
   res.redirect("/");
 });

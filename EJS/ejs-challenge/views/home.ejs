@@ -2,6 +2,9 @@
 
 <h1>HOME</h1>
 <p><%= homeString %></p>
-<% console.log(posts) %>
+
+<%for(let a=0;a<Object.keys(posts).length;a++){ %>
+<%    console.log(posts[a].title);  %>
+<% }  %>
 
 <%- include("partials/footer.ejs") -%>
