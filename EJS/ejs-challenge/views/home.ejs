@@ -3,8 +3,11 @@
 <h1>HOME</h1>
 <p><%= homeString %></p>
 
-<%for(let a=0;a<Object.keys(posts).length;a++){ %>
-<%    console.log(posts[a].title);  %>
-<% }  %>
+<!-- for(let a=0;a<Object.keys(posts).length;a++){ %>
+    console.log(posts[a].title);  %>
+ }   -->
+<%posts.forEach(function(post){ %>
+<%    console.log(post.title);  %>
+<% });  %>
 
 <%- include("partials/footer.ejs") -%>
