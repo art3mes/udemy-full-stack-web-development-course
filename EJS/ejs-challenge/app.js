@@ -17,8 +17,10 @@ app.use(express.static("public"));
 
 
 app.get("/",function(req,res){
-  res.render("home.ejs", {homeString:homeStartingContent});
-  console.log(posts);
+  res.render("home.ejs", {
+    homeString:homeStartingContent,
+    posts:posts
+  });
 });
 app.get("/about", function(req,res){
   res.render("about.ejs", {aboutString:aboutContent});
