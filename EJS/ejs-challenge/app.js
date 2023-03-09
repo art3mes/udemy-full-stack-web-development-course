@@ -32,6 +32,12 @@ app.get("/contact", function(req,res){
   res.render("contact.ejs", {contactString:contactContent});
 });
 
+
+app.get('/posts/:postName', function(req, res){                 //making a dynamic website
+  console.log(req.params.postName);
+ // console.log(req.params);                                  //prints all parameters
+});
+
 app.post("/compose", function(req,res){
   const post={
     title:req.body.inputText, 
