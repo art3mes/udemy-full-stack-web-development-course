@@ -34,10 +34,6 @@ app.get("/contact", function(req,res){
   res.render("contact.ejs", {contactString:contactContent});
 });
 
-app.get("/post",function(req,res){
-  res.render("post.ejs",);
-});
-
 app.get('/posts/:postName', function(req, res){                 //making a dynamic website
   const requestedTitle=_.lowerCase(req.params.postName);
  // console.log(req.params);                                  //prints all parameters
@@ -45,7 +41,7 @@ app.get('/posts/:postName', function(req, res){                 //making a dynam
   posts.forEach(function(post){                             //searching for a post in already made posts
     let storedTitle=_.lowerCase(post.title);
     if(storedTitle===requestedTitle){
-     res.render("post.ejs",{postTitle: post.title, postContent: post.content} )
+     res.render("post.ejs",{postTitle: post.title, postContent: post.content} );     //making separate page for each post 🌟
     }
   });
 });
