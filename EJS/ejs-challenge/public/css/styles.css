@@ -61,4 +61,12 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 700px; /* Or any other value you'd like */
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+.contentContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
