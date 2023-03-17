@@ -34,7 +34,7 @@ app.post("/", function(req,res){
     const url="https://us18.api.mailchimp.com/3.0/lists/d1c66f90cb";
     const options={
         method:"POST",
-        auth:"reiner1:3732a7a4dbce1bd3a435ab255f8a9ccc-us18"
+        auth:"reiner1:f220e69914c3aeb97467cb42e33719cf-us18"
     };
     const request=https.request(url,options, function(response){          //save value in a constant. then send it to mailchimp server
         response.on("data", function(data){
@@ -61,7 +61,7 @@ app.listen(process.env.PORT || 3000, function(){
 });
 
 // API
-//3732a7a4dbce1bd3a435ab255f8a9ccc-us18
+//f220e69914c3aeb97467cb42e33719cf-us18
 
 // list id
 // d1c66f90cb
