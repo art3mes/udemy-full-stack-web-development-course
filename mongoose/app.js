@@ -2,7 +2,7 @@
 const mongoose=require('mongoose');                            //acquire
 mongoose.connect('mongodb://127.0.0.1:27017/human');           //connecting to mongoDB
 
-const People=mongoose.model('People',{                    //making a Schema
+const People=mongoose.model('Person',{                    //making a Schema
   name: String,
   age: Number,
   hobby: String
@@ -10,18 +10,28 @@ const People=mongoose.model('People',{                    //making a Schema
 
 const person1= new People({                            //making an object of the said schema. 
   
-  name: "Milenia",                                  //INSERTION
-  age: 20,                                        //order can be changed
-  hoby: "lucifer is scary"
+  name: "lue",                                  //INSERTION
+  age: 24,                                        //order can be changed
+  hoby: "no"
 });
 
-People.deleteOne({ age: 20 })                                        //will delete entry having age of 20. One entry at a time :shrug:
-  .then(() => {
-    console.log('Entry with age 20 deleted from the database.');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// People.deleteOne({ age: 20 })                                        //will delete entry having age of 20. One entry at a time :shrug:
+//   .then(() => {
+//     console.log('Entry with age 20 deleted from the database.');
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
+const person2=new People({
+  name:"hub", age:36,hobby:"standup comedy"
+});
+const person3=new People({
+  name:"lars", age:12,hobby:"mangaka"
+});
 
-person1.save().then(()=>console.log("Entry added into the Database."));        //saving the previously made object into the db
+const arr = [person1,person2,person3];
+People.insertMany(arr);
+
+console.log("done");
+// person1.save().then(()=>console.log("Entry added into the Database."));        //saving the previously made object into the db
