@@ -14,6 +14,15 @@ const person1= new People({                            //making an object of the
   age: 24,                                        //order can be changed
   hoby: "no"
 });
+const person2=new People({
+  name:"hub", age:36,hobby:"standup comedy"
+});
+const person3=new People({
+  name:"lars", age:12,hobby:"mangaka"
+});
+
+
+// person1.save().then(()=>console.log("Entry added into the Database."));        //saving the previously made object into the db. for single input
 
 // People.deleteOne({ age: 20 })                                        //will delete entry having age of 20. One entry at a time :shrug:
 //   .then(() => {
@@ -23,15 +32,17 @@ const person1= new People({                            //making an object of the
 //     console.log(error);
 //   });
 
-const person2=new People({
-  name:"hub", age:36,hobby:"standup comedy"
-});
-const person3=new People({
-  name:"lars", age:12,hobby:"mangaka"
-});
+// const arr = [person1,person2,person3];              //multiple entry
+// People.insertMany(arr);
 
-const arr = [person1,person2,person3];
-People.insertMany(arr);
+People.find().then(function(person){
+
+  //Return results
+  //console.log(person);   //will print the whole doc\
+  person.forEach(function(per){ 
+    console.log(per.name);
+  });
+  mongoose.connection.close();
+});
 
 console.log("done");
-// person1.save().then(()=>console.log("Entry added into the Database."));        //saving the previously made object into the db
