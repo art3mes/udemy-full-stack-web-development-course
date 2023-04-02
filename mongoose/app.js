@@ -3,26 +3,33 @@ const mongoose=require('mongoose');                            //acquire
 mongoose.connect('mongodb://127.0.0.1:27017/human');           //connecting to mongoDB
 
 const People=mongoose.model('Person',{                    //making a Schema
-  name: String,
-  age: Number,
+  name: {
+    type:String,
+    required: [true, "Write your name :("]                   //validator: making name a mandatory field
+  },
+  age: {
+    type:Number,                                              //validation
+    min:5,
+    max:65
+  },
   hobby: String
 });
 
 const person1= new People({                            //making an object of the said schema. 
   
-  name: "lue",                                  //INSERTION
-  age: 24,                                        //order can be changed
-  hoby: "no"
+  //name: "GayDude",                                  //INSERTION
+  age: 19,                                        //order can be changed
+  hoby: "im harold"
 });
-const person2=new People({
-  name:"hub", age:36,hobby:"standup comedy"
-});
-const person3=new People({
-  name:"lars", age:12,hobby:"mangaka"
-});
+// const person2=new People({
+//   name:"hub", age:36,hobby:"standup comedy"
+// });
+// const person3=new People({
+//   name:"lars", age:12,hobby:"mangaka"
+// });
 
 
-// person1.save().then(()=>console.log("Entry added into the Database."));        //saving the previously made object into the db. for single input
+ person1.save().then(()=>console.log("Entry added into the Database."));        //saving the previously made object into the db. for single input
 
 // People.deleteOne({ age: 20 })                                        //will delete entry having age of 20. One entry at a time :shrug:
 //   .then(() => {
