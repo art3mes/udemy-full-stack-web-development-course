@@ -29,13 +29,22 @@ const item3=new Item({
     name: "<----Hit this to delete that item"
 });
 const defaultArray=[item1,item2,item3];
-Item.insertMany(defaultArray);           //inserting the default array
+
 
 app.get("/", function(req,res){
 
-    const day=date.getDate();       //using the date module i made :)
-    res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
-                // will have to pass all the letiables. it passes whenever home route is loaded
+    Item.find().then(function(foundItem){       //printing the items stored in the backend to the console
+
+        if(foundItem.length===0){
+            Item.insertMany(defaultArray);           //inserting the default array
+            res.redirect("/");
+        }else{
+            res.render("list", {listTitle:"Today", itemInTheList:foundItem});
+        }
+    });
+    // const day=date.getDate();       //using the date module i made :)
+    // res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
+    //             // will have to pass all the letiables. it passes whenever home route is loaded
 });                                                                     // {letiableInEJSfile : letiableHere}
 
 app.post("/",function(req,res){
