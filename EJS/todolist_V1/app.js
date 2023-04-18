@@ -2,14 +2,34 @@ const express=require("express");                        //CREATE A views FOLDER
 const bodyParser=require("body-parser");                // file.ejs
 const e = require("express");
 const app=express();
+const mongoose = require("mongoose");
 const date= require(__dirname+"/date.js");
 //console.log(date());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
 
-const items=["Buy apples", "Post the letter", "Get milk"];    // const array? well yes dipshit. you can push elemenets in it
-const work=[];
+// const items=["Buy apples", "Post the letter", "Get milk"];    // const array? well yes dipshit. you can push elemenets in it
+// const work=[];                 //commenting it all out. cause we are using mongoose as the backend
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/todolistDB');      //connection to mongoDB
+const itemsSchema={                                //mongoose schema
+    name:String
+};
+const Item=mongoose.model('Item', itemsSchema);       //mongoose model       
+
+const item1=new Item({
+    name: "Welcome to your ToDoList!"
+});
+const item2=new Item({
+    name: "Hit the + button to add a new item"
+});
+const item3=new Item({
+    name: "<----Hit this to delete that item"
+});
+const defaultArray=[item1,item2,item3];
+Item.insertMany(defaultArray);           //inserting the default array
 
 app.get("/", function(req,res){
 
