@@ -48,15 +48,22 @@ app.get("/", function(req,res){
 });                                                                     // {letiableInEJSfile : letiableHere}
 
 app.post("/",function(req,res){
-    const item=req.body.newItem;
-    if(req.body.list==="Work"){
-        work.push(item);
-        res.redirect("/work");
-    }
-    else{
-        items.push(item);
-        res.redirect("/");
-    }
+    //const item=req.body.newItem;
+    // if(req.body.list==="Work"){
+    //     work.push(item);
+    //     res.redirect("/work");
+    // }
+    // else{
+    //     items.push(item);
+    //     res.redirect("/");
+    // }
+    const itemName=req.body.newItem;
+    const item=new Item({
+        name:itemName
+    });
+    item.save();
+    res.redirect("/");
+
 });
 
 app.get("/work", function(req,res){
