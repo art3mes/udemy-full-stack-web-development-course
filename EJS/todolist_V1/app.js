@@ -66,6 +66,18 @@ app.post("/",function(req,res){
 
 });
 
+app.post("/delete", function(req,res){                  //deleting items
+    //console.log(req.body.checkbox);
+    const checkedItem=req.body.checkbox;
+    Item.findOneAndDelete({_id:checkedItem}).then((deletedDocument)=>{            //to delete one element
+    console.log("Deleted document: ",deletedDocument.name);
+    })
+    .catch((error)=>{
+    console.error("Error deleting document: ",error);
+    });
+    res.redirect("/");
+});
+
 app.get("/work", function(req,res){
     res.render("list", {listTitle:"Work List", itemInTheList:work});
 });
