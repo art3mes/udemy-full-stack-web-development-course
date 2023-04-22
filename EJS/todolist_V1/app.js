@@ -30,6 +30,11 @@ const item3=new Item({
 });
 const defaultArray=[item1,item2,item3];
 
+const listSchema={       //new list schema for the custom lists
+    name:String,
+    items:[itemsSchema]
+}
+const List=mongoose.model('list',listSchema);        //lists' model
 
 app.get("/", function(req,res){
 
@@ -46,6 +51,25 @@ app.get("/", function(req,res){
     // res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
     //             // will have to pass all the letiables. it passes whenever home route is loaded
 });                                                                     // {letiableInEJSfile : letiableHere}
+app.get("/:customListName", function(req,res){
+    const customListName=req.params.customListName;
+
+    List.findOne({name:customListName }).then((foundList)=>{
+        if(!foundList){
+            //make a new list
+            const list =new List({          //creating new list whenever new custom list is called
+                name: customListName,
+                items:defaultArray
+            });
+            list.save();  //saving the made list to db
+            res.redirect("/"+customListName); //redirect to current directory
+        }else{
+            //show the existing list
+            res.render("list", {listTitle:foundList.name, itemInTheList:foundList.items});
+        }
+    });
+                      
+})
 
 app.post("/",function(req,res){
     //const item=req.body.newItem;
@@ -76,6 +100,7 @@ app.post("/delete", function(req,res){                  //deleting items
     console.error("Error deleting document: ",error);
     });
     res.redirect("/");
+
 });
 
 app.get("/work", function(req,res){
