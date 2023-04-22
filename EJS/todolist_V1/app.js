@@ -47,9 +47,6 @@ app.get("/", function(req,res){
             res.render("list", {listTitle:"Today", itemInTheList:foundItem});
         }
     });
-    // const day=date.getDate();       //using the date module i made :)
-    // res.render("list", {listTitle:day, itemInTheList:items});          //it will render the file "list" present in views folder. and a js object is passed
-    //             // will have to pass all the letiables. it passes whenever home route is loaded
 });                                                                     // {letiableInEJSfile : letiableHere}
 app.get("/:customListName", function(req,res){
     const customListName=req.params.customListName;
@@ -67,27 +64,26 @@ app.get("/:customListName", function(req,res){
             //show the existing list
             res.render("list", {listTitle:foundList.name, itemInTheList:foundList.items});
         }
-    });
-                      
+    });                   
 })
 
-app.post("/",function(req,res){
-    //const item=req.body.newItem;
-    // if(req.body.list==="Work"){
-    //     work.push(item);
-    //     res.redirect("/work");
-    // }
-    // else{
-    //     items.push(item);
-    //     res.redirect("/");
-    // }
+app.post("/",function(req,res){           //handling post requests
     const itemName=req.body.newItem;
-    const item=new Item({
+    const listName=req.body.list;    //to store list name
+
+    const item=new Item({       //making new item
         name:itemName
     });
-    item.save();
-    res.redirect("/");
-
+    if(listName==="Today"){         //if it is homepage
+        item.save();      //save the item
+        res.redirect("/");      //redirect to homepage
+    }else{                    //its not homepage
+        List.findOne({name:listName }).then((foundList)=>{             //find if the homepage already exists or not
+           foundList.items.push(item);                      //if found, push the item into the existing list array
+           foundList.save();       //save the list
+           res.redirect("/"+listName);       //redirect to the custom list
+        });
+    }
 });
 
 app.post("/delete", function(req,res){                  //deleting items
@@ -103,18 +99,16 @@ app.post("/delete", function(req,res){                  //deleting items
 
 });
 
-app.get("/work", function(req,res){
-    res.render("list", {listTitle:"Work List", itemInTheList:work});
-});
-app.post("/work", function(req,res){
-    const item=req.body.newItem;
-    work.push(item);
-    res.redirect("/work");
-});
 
-app.get("/about", function(req,res){
-    res.render("about");
-});
+// app.post("/work", function(req,res){
+//     const item=req.body.newItem;
+//     work.push(item);
+//     res.redirect("/work");
+// });
+
+// app.get("/about", function(req,res){
+//     res.render("about");
+// });
 app.listen(3000, function(){
     console.log("Server is running!");
 });
