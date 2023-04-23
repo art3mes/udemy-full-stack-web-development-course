@@ -3,6 +3,7 @@ const bodyParser=require("body-parser");                // file.ejs
 const e = require("express");
 const app=express();
 const mongoose = require("mongoose");
+const _=require("lodash");
 const date= require(__dirname+"/date.js");
 //console.log(date());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -49,7 +50,7 @@ app.get("/", function(req,res){
     });
 });                                                                     // {letiableInEJSfile : letiableHere}
 app.get("/:customListName", function(req,res){
-    const customListName=req.params.customListName;
+    const customListName=_.capitalize(req.params.customListName);   //using lodash to capitalize the first letter of the word
 
     List.findOne({name:customListName }).then((foundList)=>{
         if(!foundList){
