@@ -14,7 +14,8 @@ app.use(express.static("public"));       //location of statuc files. MORE DETAIL
 // const work=[];                 //commenting it all out. cause we are using mongoose as the backend
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/todolistDB');      //connection to mongoDB
+//mongoose.connect('mongodb://127.0.0.1:27017/todolistDB');      //connection to mongoDB
+mongoose.connect('mongodb+srv://admin-arty:Test123@cluster0.569qwxi.mongodb.net/todolistDB');
 const itemsSchema={                                //mongoose schema
     name:String
 };
