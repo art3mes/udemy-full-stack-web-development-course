@@ -4,15 +4,9 @@ const e = require("express");
 const app=express();
 const mongoose = require("mongoose");
 const _=require("lodash");
-const date= require(__dirname+"/date.js");
-//console.log(date());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');                        // app which is created by Express is being told to use EJS as its view engine
 app.use(express.static("public"));       //location of statuc files. MORE DETAILS IN THE SIGNUP PROJECT
-
-// const items=["Buy apples", "Post the letter", "Get milk"];    // const array? well yes dipshit. you can push elemenets in it
-// const work=[];                 //commenting it all out. cause we are using mongoose as the backend
-
 
 //mongoose.connect('mongodb://127.0.0.1:27017/todolistDB');      //connection to mongoDB
 mongoose.connect('mongodb+srv://admin-arty:Test123@cluster0.569qwxi.mongodb.net/todolistDB');
@@ -121,16 +115,6 @@ app.post("/delete", function(req,res){                  //deleting items
 
 });
 
-
-// app.post("/work", function(req,res){
-//     const item=req.body.newItem;
-//     work.push(item);
-//     res.redirect("/work");
-// });
-
-// app.get("/about", function(req,res){
-//     res.render("about");
-// });
 app.listen(3000, function(){
     console.log("Server is running!");
 });
