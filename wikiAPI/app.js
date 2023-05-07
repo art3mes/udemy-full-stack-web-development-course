@@ -16,6 +16,13 @@ const articleSchema={
 };
 const Article=mongoose.model('Article',articleSchema);
 
+app.get('/articles',function(req,res){
+    Article.find().then(function(article){
+        console.log(article);
+        res.send(article);
+    })
+});
+
 app.listen(3000, function(){
     console.log("Server is running on the port 3000");
 });
