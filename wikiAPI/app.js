@@ -24,14 +24,13 @@ app.get('/articles',function(req,res){
 });
 
 app.post('/articles', function(req, res) {
-    console.log(req.body.title);
-    console.log(req.body.content);
+    //console.log(req.body.title);
+    //console.log(req.body.content);
   
     const newArticle = new Article({
       title: req.body.title,
       content: req.body.content
     });
-  
     newArticle.save()
       .then(() => {
         res.send("Data sent successfully.");
@@ -41,6 +40,16 @@ app.post('/articles', function(req, res) {
       });
   });
   
+app.delete("/articles",function(req,res){
+  
+  Article.deleteMany({}).then(function(){
+    console.log("Data has been deleted"); // Success
+    res.send("Data has been deleted.");
+  }).catch(function(error){
+    console.log(error); // Failure
+    res.send(error);
+  });
+});
 
 app.listen(3000, function(){
     console.log("Server is running on the port 3000");
