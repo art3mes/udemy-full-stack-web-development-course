@@ -16,31 +16,30 @@ const articleSchema={
 };
 const Article=mongoose.model('Article',articleSchema);
 
-app.get('/articles',function(req,res){
-    Article.find().then(function(article){
-        console.log(article);
-        res.send(article);
-    })
-});
+app.route("/articles")
+.get(function(req,res){
+  Article.find().then(function(article){
+      console.log(article);
+      res.send(article);
+  })
+})
+.post(function(req, res) {
+  //console.log(req.body.title);
+  //console.log(req.body.content);
 
-app.post('/articles', function(req, res) {
-    //console.log(req.body.title);
-    //console.log(req.body.content);
-  
-    const newArticle = new Article({
-      title: req.body.title,
-      content: req.body.content
-    });
-    newArticle.save()
-      .then(() => {
-        res.send("Data sent successfully.");
-      })
-      .catch(err => {
-        res.send(err);
-      });
+  const newArticle = new Article({
+    title: req.body.title,
+    content: req.body.content
   });
-  
-app.delete("/articles",function(req,res){
+  newArticle.save()
+    .then(() => {
+      res.send("Data sent successfully.");
+    })
+    .catch(err => {
+      res.send(err);
+    });
+})
+.delete(function(req,res){
   
   Article.deleteMany({}).then(function(){
     console.log("Data has been deleted"); // Success
