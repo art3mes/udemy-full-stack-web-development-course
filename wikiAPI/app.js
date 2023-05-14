@@ -73,27 +73,31 @@ app.route("/articles")
   })
 
   .put(function(req,res){
-    Article.updateOne(
-      {},
-      {},
-      {overwwrite: true},
-      function(err){
-        if(!err){
-          res.send();
-        }
-      }
-    );
     Article.findOneAndUpdate(
-      {title:req.params.articleTitle},
-      { title:req.body.title, content: req.body.content }, 
-      { new: true })           
+      {title:req.params.articleTitle},           //updates everything. if one data isnt given, itll make it into a NULL space.
+       req.body,   
+      { new: true })            
       .then((updatedDocument) => {                                                         //update an entry
-        console.log('Updated document:', updatedDocument);
+        //console.log('Updated document:', updatedDocument);
         res.send("PUT request submitted. Item has been updated");
       })
       .catch((error) => {
         console.error('Error updating document:', error);
-        
+
+      });
+  })
+  .patch(function(req,res){
+    Article.findOneAndUpdate(
+      {title:req.params.articleTitle},
+       req.body,                //only update what is needed
+      { new: true })           
+      .then((updatedDocument) => {                                                         //update an entry
+       // console.log('Updated document:', updatedDocument);
+        res.send("PATCH request submitted. Item has been updated");
+      })
+      .catch((error) => {
+        console.error('Error updating document:', error);
+
       });
   });
 
