@@ -70,6 +70,31 @@ app.route("/articles")
         //console.log("An error occurred while finding the article:", err);
         res.status(500).send("An error occurred while finding the article");
     });
+  })
+
+  .put(function(req,res){
+    Article.updateOne(
+      {},
+      {},
+      {overwwrite: true},
+      function(err){
+        if(!err){
+          res.send();
+        }
+      }
+    );
+    Article.findOneAndUpdate(
+      {title:req.params.articleTitle},
+      { title:req.body.title, content: req.body.content }, 
+      { new: true })           
+      .then((updatedDocument) => {                                                         //update an entry
+        console.log('Updated document:', updatedDocument);
+        res.send("PUT request submitted. Item has been updated");
+      })
+      .catch((error) => {
+        console.error('Error updating document:', error);
+        
+      });
   });
 
 app.listen(3000, function(){
