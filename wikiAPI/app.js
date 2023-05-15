@@ -79,7 +79,7 @@ app.route("/articles")
       { new: true })            
       .then((updatedDocument) => {                                                         //update an entry
         //console.log('Updated document:', updatedDocument);
-        res.send("PUT request submitted. Item has been updated");
+        res.send("PUT request submitted. Item has been updated");                    //bug: updating docs even if it doesnt exit
       })
       .catch((error) => {
         console.error('Error updating document:', error);
@@ -98,6 +98,16 @@ app.route("/articles")
       .catch((error) => {
         console.error('Error updating document:', error);
 
+      });
+  })
+  .delete(function(req,res){
+    Article.findOneAndDelete({title:req.params.articleTitle}).then((deletedDocument)=>{            //to delete one element
+        console.log("Deleted document: ",deletedDocument);
+        res.send("requested article has been deleted.")
+      })
+      .catch((error)=>{
+        console.error("Error deleting document: ",error);
+        res.send(error);
       });
   });
 
