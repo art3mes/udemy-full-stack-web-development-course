@@ -2,15 +2,21 @@ const express= require("express");
 const bodyParser= require("body-parser");
 const ejs=require("ejs");
 const mongoose = require("mongoose");
+const encrypt=require("mongoose-encryption");
 const app=express();
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 mongoose.connect('mongodb://127.0.0.1:27017/userDB');
-const userSchema={
+const userSchema=new mongoose.Schema({           //standard mongoose schema format
     email:String,
     password: String
-};
+});
+
+const secret="Thisismylittlesecret.";           //this key will be used for encrypting/decrypting data in level 2
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password']  });       //applying the mongoose-encrypt plugin in mongoose to get the encryption features
+                                       //encrypted fields are the one that will be encrypted. remmove the whole argument to encrypt the whole doc
+
 const User=mongoose.model('User',userSchema);
 
 app.get("/",function(req,res){
