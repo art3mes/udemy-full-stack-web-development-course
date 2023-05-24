@@ -1,3 +1,4 @@
+require('dotenv').config();                  //requiring DOTENV as soon as possible
 const express= require("express");
 const bodyParser= require("body-parser");
 const ejs=require("ejs");
@@ -13,7 +14,8 @@ const userSchema=new mongoose.Schema({           //standard mongoose schema form
     password: String
 });
 
-const secret="Thisismylittlesecret.";           //this key will be used for encrypting/decrypting data in level 2
+const secret=process.env.SECRET;           //this key will be used for encrypting/decrypting data in level 2. 
+                                    //hiding it from public using dotevn
 userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password']  });       //applying the mongoose-encrypt plugin in mongoose to get the encryption features
                                        //encrypted fields are the one that will be encrypted. remmove the whole argument to encrypt the whole doc
 
