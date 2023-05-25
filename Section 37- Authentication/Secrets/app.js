@@ -3,7 +3,8 @@ const express= require("express");
 const bodyParser= require("body-parser");
 const ejs=require("ejs");
 const mongoose = require("mongoose");
-const encrypt=require("mongoose-encryption");
+const md5=require("md5");
+//const encrypt=require("mongoose-encryption");           not required further than level 2 security
 const app=express();
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -14,10 +15,14 @@ const userSchema=new mongoose.Schema({           //standard mongoose schema form
     password: String
 });
 
-const secret=process.env.SECRET;           //this key will be used for encrypting/decrypting data in level 2. 
+
+//////////////////////////////////////USING HASHING (LEVEL 3) INSTEAD OF LEVEL 2 ENCRYPTION //////////////////////////////////////////
+
+//const secret=process.env.SECRET;           //this key will be used for encrypting/decrypting data in level 2. 
                                     //hiding it from public using dotevn
-userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password']  });       //applying the mongoose-encrypt plugin in mongoose to get the encryption features
+//userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password']  });       //applying the mongoose-encrypt plugin in mongoose to get the encryption features
                                        //encrypted fields are the one that will be encrypted. remmove the whole argument to encrypt the whole doc
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const User=mongoose.model('User',userSchema);
 
@@ -33,7 +38,8 @@ app.get("/register",function(req,res){
 app.post("/register", function(req,res){
     const newUser=new User({
         email:req.body.username,
-        password:req.body.password
+        //password:req.body.password
+        password:md5(req.body.password)                //turning the entered password into a hash table to be stored in the db
     });
     newUser.save()
       .then(() => {
@@ -46,7 +52,8 @@ app.post("/register", function(req,res){
 });
 app.post("/login",function(req,res){
     const username=req.body.username;
-    const password=req.body.password;
+   // const password=req.body.password; for level 1 and 2
+    const password=md5(req.body.password);           //converting the entered password into a hash table for comparision with the stored password
 
     User.findOne({email:username})
     .then((foundUser)=>{

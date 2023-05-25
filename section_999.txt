@@ -6,3 +6,11 @@ git rm -r --cached node_modules
 git commit -m "removing node_modules"
 
 removing unremovable node_modules
+
+
+
+
+
+
+using md5 creates same hash table for same input
+example:  md5("1234")==md5("1234")    will return true
