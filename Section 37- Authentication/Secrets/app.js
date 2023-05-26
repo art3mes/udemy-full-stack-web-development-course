@@ -66,7 +66,15 @@ app.get("/secrets",function(req,res){
         res.redirect("/login");
     }
 });
-
+app.get("/logout", function(req,res){
+    req.logout(function(err) {
+        if (err) { 
+            console.log(err); 
+        }else{
+            res.redirect('/');
+        }
+    });
+});
 app.post("/register", function(req,res){
 /////////////////////////////////////////////////////// LEVEL 4 //////////////////////////////////////////////////////////////////////////
     // const userpass = /^\$2y\$/.test(req.body.password) ? '$2a$' + req.body.password.slice(4) : req.body.password;   //https://github.com/kelektiv/node.bcrypt.js/issues/849#issuecomment-882636932
