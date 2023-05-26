@@ -14,3 +14,14 @@ removing unremovable node_modules
 
 using md5 creates same hash table for same input
 example:  md5("1234")==md5("1234")    will return true
+
+
+configuring express-session
+
+1. require the package
+2. setup sessions before mongoose connection and after express-app setup   (Choosing false is useful for implementing login sessions, reducing server storage usage, or complying with laws that require permission before setting a cookie. 
+Choosing false will also help with race conditions where a client makes multiple parallel requests without a session.)
+
+3. initialise and start using passpord , below step 2
+4. initialise passport-local-mongoose  , just after userscheme
+5. create local login strategy, serialization and deserialization using passport-local-mongoose just after usermodel

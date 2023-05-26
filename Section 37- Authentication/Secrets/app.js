@@ -5,17 +5,34 @@ const ejs=require("ejs");
 const mongoose = require("mongoose");
 const md5=require("md5");                    //level 3 hashing
 //const encrypt=require("mongoose-encryption");           not required further than level 2 security
-const bcrypt = require('bcrypt');             //level 4 hashing + salting
-const saltRounds = 10;                    //more the salt rounds, more secure is the resultant hash at the expense of processing power. salt=31 can take 31 days on a 2ghz processor to make its hash
+// const bcrypt = require('bcrypt');             //level 4 hashing + salting
+// const saltRounds = 10;                    //more the salt rounds, more secure is the resultant hash at the expense of processing power. salt=31 can take 31 days on a 2ghz processor to make its hash
+const session = require('express-session');       //COOKIES AND SESSIONS
+const passport=require("passport");               //COOKIES AND SESSIONS
+const passportLocalMongoose=require("passport-local-mongoose");     //COOKIES AND SESSIONS. no need to require passport-local. its a feature of passport-local-mongoose. just install both of them
+
 const app=express();
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(session({                             //defining sessions     
+    secret:"Im am an idiot.",
+    resave:false,
+    saveUninitialized:false
+}));
+
+app.use(passport.initialize());      //initialiazing passport
+app.use(passport.session());        //using passport to handle the sessions
+
+
 mongoose.connect('mongodb://127.0.0.1:27017/userDB');
 const userSchema=new mongoose.Schema({           //standard mongoose schema format
     email:String,
     password: String
 });
+
+userSchema.plugin(passportLocalMongoose);          //COOKIES AND SESSIONS
 
 
 //////////////////////////////////////USING HASHING (LEVEL 3) INSTEAD OF LEVEL 2 ENCRYPTION //////////////////////////////////////////
@@ -27,6 +44,10 @@ const userSchema=new mongoose.Schema({           //standard mongoose schema form
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const User=mongoose.model('User',userSchema);
+ 
+passport.use(User.createStrategy());            //local login strategy      //cookies and sessions
+passport.serializeUser(User.serializeUser());    //stores data into the cookie            //cookies and sessions
+passport.deserializeUser(User.deserializeUser());    //recovers data from the cookie           //cookies and sessions
 
 app.get("/",function(req,res){
     res.render("home");
