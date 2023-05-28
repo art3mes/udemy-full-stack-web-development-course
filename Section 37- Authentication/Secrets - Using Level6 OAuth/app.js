@@ -21,7 +21,7 @@ app.use(session({                             //level 5  defining sessions
 }));
 
 app.use(passport.initialize());      //level 5  initialiazing passport
-app.use(passport.session());        //level 5  using passport to handle the sessions
+app.use(passport.session());         //level 5  using passport to handle the sessions
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/userDB');
@@ -31,19 +31,18 @@ const userSchema=new mongoose.Schema({           //standard mongoose schema form
 });
 
 userSchema.plugin(passportLocalMongoose);          //level 5  COOKIES AND SESSIONS
-userSchema.plugin(findOrCreate);                 //level 6
+userSchema.plugin(findOrCreate);                   //level 6
 
 const User=mongoose.model('User',userSchema);
  
-passport.use(User.createStrategy());            //local login strategy      //level 5  cookies and sessions
+passport.use(User.createStrategy());            //local login strategy                    //level 5  cookies and sessions
 passport.serializeUser(User.serializeUser());    //stores data into the cookie            //level 5  cookies and sessions
-passport.deserializeUser(User.deserializeUser());    //recovers data from the cookie           //level 5  cookies and sessions
+passport.deserializeUser(User.deserializeUser());    //recovers data from the cookie      //level 5  cookies and sessions
 
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets"
-  
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
@@ -93,8 +92,7 @@ app.post("/register", function(req,res){
                 res.redirect("/secrets");           //level 5  first time redirecting to secret route
             });
         }
-    });
-    
+    });   
 });
 app.post("/login",function(req,res){
 
