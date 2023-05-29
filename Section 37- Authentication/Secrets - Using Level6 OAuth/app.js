@@ -28,7 +28,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/userDB');
 const userSchema=new mongoose.Schema({           //standard mongoose schema format
     email:String,
     password: String,
-    googleId:String
+    googleId:String,
+    secret:String
 });
 
 userSchema.plugin(passportLocalMongoose);          //level 5  COOKIES AND SESSIONS
@@ -89,11 +90,48 @@ app.get("/register",function(req,res){
 });
 
 app.get("/secrets",function(req,res){
+    // if(req.isAuthenticated()){        //level 5  function of passport-local,passport, passport-local-mongoose
+    //     res.render("secrets");        //secret is where anyone can see the added secrets.
+    // }else{
+    //     res.redirect("/login");
+    // }
+    User.find({"secret": {$ne: null}})
+    .then(foundUsers => {
+      if (foundUsers && foundUsers.length > 0) {
+        res.render("secrets", { usersWithSecrets: foundUsers });
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  
+});
+app.get("/submit",function(req,res){
     if(req.isAuthenticated()){        //level 5  function of passport-local,passport, passport-local-mongoose
-        res.render("secrets");
+        res.render("submit");
     }else{
         res.redirect("/login");
     }
+});
+app.post("/submit", function(req,res){
+    const submittedSecret=req.body.secret;
+    const userObject= req.user;
+    console.log(userObject.id);
+
+    User.findById(userObject.id)
+    .then(foundUser => {
+      if (foundUser) {
+        foundUser.secret = submittedSecret;
+        return foundUser.save();
+      }
+    })
+    .then(() => {
+      res.redirect("/secrets");
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  
 });
 app.get("/logout", function(req,res){
     req.logout(function(err) {
