@@ -27,7 +27,8 @@ app.use(passport.session());         //level 5  using passport to handle the ses
 mongoose.connect('mongodb://127.0.0.1:27017/userDB');
 const userSchema=new mongoose.Schema({           //standard mongoose schema format
     email:String,
-    password: String
+    password: String,
+    googleId:String
 });
 
 userSchema.plugin(passportLocalMongoose);          //level 5  COOKIES AND SESSIONS
@@ -36,8 +37,23 @@ userSchema.plugin(findOrCreate);                   //level 6
 const User=mongoose.model('User',userSchema);
  
 passport.use(User.createStrategy());            //local login strategy                    //level 5  cookies and sessions
-passport.serializeUser(User.serializeUser());    //stores data into the cookie            //level 5  cookies and sessions
-passport.deserializeUser(User.deserializeUser());    //recovers data from the cookie      //level 5  cookies and sessions
+//passport.serializeUser(User.serializeUser());    //stores data into the cookie            //level 5  cookies and sessions    //local scope
+//passport.deserializeUser(User.deserializeUser());    //recovers data from the cookie      //level 5  cookies and sessions    //local scope
+
+passport.serializeUser(function(user, cb) {
+    process.nextTick(function() {
+      return cb(null, {
+        id: user.id,
+        username: user.username,
+        picture: user.picture
+      });
+    });
+  });
+  passport.deserializeUser(function(user, cb) {
+    process.nextTick(function() {
+      return cb(null, user);
+    });
+  });
 
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
@@ -45,6 +61,7 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3000/auth/google/secrets"
   },
   function(accessToken, refreshToken, profile, cb) {
+   // console.log(profile);
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return cb(err, user);
     });
@@ -56,8 +73,14 @@ app.get("/",function(req,res){
 });
 
 app.get("/auth/google",
-  passport.authenticate('google', { scope: ["profile"] })
+  passport.authenticate('google', { scope: ["profile"] })   //google means using google strategy
 );
+app.get("/auth/google/secrets",                    //google callback function. used after selecting the google id when loggin in
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect to secrets.
+    res.redirect('/secrets');
+  });
 app.get("/login",function(req,res){
     res.render("login");
 });
