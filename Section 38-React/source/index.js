@@ -3,6 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+const myName="Koala";
 //ReactDOM.render(what to enter,where to enter,when to enter);
 //first argumment takes only one html element
 ReactDOM.render( document.getElementById("root"));
@@ -23,6 +24,9 @@ then it's being inserted as a string into our h1 and then that's being inserted 
 
 into a JavaScript file.
     <p>Your lucky number is {Math.floor(Math.random()*10)}</p>
+
+    <p>Created by {myName}</p>
+    <p>Copyright {new Date().getFullYear()}</p>
       </div>
       ,document.getElementById("root"));
     
