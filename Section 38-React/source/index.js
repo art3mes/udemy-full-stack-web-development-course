@@ -4,6 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const myName="Koala";
+const picSum = "https://picsum.photos/200";
 //ReactDOM.render(what to enter,where to enter,when to enter);
 //first argumment takes only one html element
 ReactDOM.render( document.getElementById("root"));
@@ -25,8 +26,39 @@ then it's being inserted as a string into our h1 and then that's being inserted 
 into a JavaScript file.
     <p>Your lucky number is {Math.floor(Math.random()*10)}</p>
 
+
+
     <p>Created by {myName}</p>
     <p>Copyright {new Date().getFullYear()}</p>
+
+
+
+ <h1 className="heading" contentEditable="true" spellCheck="false">
+      My Favourite Foods
+    </h1>
+    <ul>
+      <img
+        className="manga"
+        alt="middle-finger"
+        src="https://w7.pngwing.com/pngs/447/1016/png-transparent-drawing-anime-art-manga-mouse-trap-black-hair-monochrome-human.png"
+      />
+      <img
+        className="manga"
+        alt="masked girl"
+        src="https://1.bp.blogspot.com/--isum6zIVSs/Xua_8bKtrhI/AAAAAAAAA6k/AVvdROxcOM4fijFvzXDLiyW0qjadUKjUwCLcBGAsYHQ/s1600/pengertian-doujin.jpg"
+      />
+      <img
+        className="manga"
+        alt="wishful bride"
+        src="https://images-cdn.9gag.com/photo/anQ4vgL_700b.jpg"
+      />
+      <img className="manga" alt="random" src="https://picsum.photos/200" />
+      <img
+        className="manga"
+        alt="random but grayscaled"
+        src={picSum + "?grayscale"}
+      />
+    </ul>
       </div>
       ,document.getElementById("root"));
     
