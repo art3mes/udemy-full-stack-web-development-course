@@ -11,10 +11,25 @@ const customStyle = {
   fontSize: "20px",
   border: "1px solid black"
 };
-
 customStyle.color = "blue";
 
 
+const greetFirst = "Good";
+var greetSecond = "Morning";
+const textColor = {
+  color: ""
+};
+const time = new Date().getHours();
+if (time >= 0 && time <= 12) {
+  greetSecond = "Morning";
+  textColor.color = "red";
+} else if (time > 12 && time <= 18) {
+  greetSecond = "Afternoon";
+  textColor.color = "green";
+} else {
+  greetSecond = "Night";
+  textColor.color = "blue";
+}
 //ReactDOM.render(what to enter,where to enter,when to enter);
 //first argumment takes only one html element
 ReactDOM.render( document.getElementById("root"));
@@ -69,8 +84,17 @@ into a JavaScript file.
         src={picSum + "?grayscale"}
       />
     </ul>
+
+
+
     <h1 style={{color:"orange", fontWeight:"700"}}>Hello Worlddddddddd!</h1>
     <h1 style={customStyle}>Hello World!</h1>
+
+
+
+    <h1 className="heading" style={textColor}>
+    {greetFirst + " " + greetSecond}
+  </h1>
       </div>
       ,document.getElementById("root"));
     
