@@ -5,6 +5,16 @@ import ReactDOM from "react-dom";
 
 const myName="Koala";
 const picSum = "https://picsum.photos/200";
+
+const customStyle = {
+  color: "red",
+  fontSize: "20px",
+  border: "1px solid black"
+};
+
+customStyle.color = "blue";
+
+
 //ReactDOM.render(what to enter,where to enter,when to enter);
 //first argumment takes only one html element
 ReactDOM.render( document.getElementById("root"));
@@ -59,6 +69,8 @@ into a JavaScript file.
         src={picSum + "?grayscale"}
       />
     </ul>
+    <h1 style={{color:"orange", fontWeight:"700"}}>Hello Worlddddddddd!</h1>
+    <h1 style={customStyle}>Hello World!</h1>
       </div>
       ,document.getElementById("root"));
     
