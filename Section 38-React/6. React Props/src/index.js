@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./components/App";
 
 function Card(props) {
   //props is an object
@@ -34,6 +35,11 @@ ReactDOM.render(
       phone="+918 372 574"
       email="gmail@chucknorris.com"
     />
+
+
+
+
+    <App />
   </div>,
   document.getElementById("root")
 );
