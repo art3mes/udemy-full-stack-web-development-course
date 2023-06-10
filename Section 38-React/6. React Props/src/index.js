@@ -14,7 +14,6 @@ function Card(props) {
     </div>
   );
 }
-
 ReactDOM.render(
   <div>
     <Card
@@ -35,10 +34,6 @@ ReactDOM.render(
       phone="+918 372 574"
       email="gmail@chucknorris.com"
     />
-
-
-
-
     <App />
   </div>,
   document.getElementById("root")
