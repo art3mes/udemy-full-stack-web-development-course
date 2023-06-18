@@ -1,6 +1,16 @@
 import React, {useState} from "react";
 
+// HOOKS
+// must use hook inside a functional component
 
+// useState()
+// const state=useState(starting state,function);
+
+// const [count, setCount]= useState(starting state, function);
+
+// the function can be used to manage count
+// to get hold onto the initial value
+// state[0]
 function App(){
 
   const [count, setCount]=useState(0);
