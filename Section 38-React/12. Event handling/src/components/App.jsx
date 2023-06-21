@@ -25,26 +25,30 @@ function App() {
     console.log(event.target.value);
     setName(event.target.value);
   }
-  function changeHeading() {
+  function changeHeading(event) {
     setHeading(name);
+    event.preventDefault(); //forms reloads by default on react. This lines stops that behaviour
   }
   return (
     <div className="container">
       <h1>Hello {heading}</h1>
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="What's your name?"
-        value={name}
-      />
-      <button
-        style={{ backgroundColor: mousedOver ? "black" : "white" }}
-        onMouseOver={toBlack}
-        onMouseOut={defaultColor}
-        onClick={changeHeading}
-      >
-        Submit
-      </button>
+      <form onSubmit={changeHeading}>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="What's your name?"
+          value={name}
+        />
+        <button
+          type="submit"
+          style={{ backgroundColor: mousedOver ? "black" : "white" }}
+          onMouseOver={toBlack}
+          onMouseOut={defaultColor}
+          //onClick={changeHeading}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
