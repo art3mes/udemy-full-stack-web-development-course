@@ -33,29 +33,39 @@ function App() {
   //   });
   // }
   
+  // function handleChange(event) {
+  //   const nameOfInput = event.target.name;
+  //   const newValue = event.target.value;
+  //   setContact((prevValue) => {
+  //     if (nameOfInput === "fName") {
+  //       return {
+  //         fName: newValue,
+  //         lName: prevValue.lName,
+  //         email: prevValue.email
+  //       };
+  //     } else if (nameOfInput === "lName") {
+  //       return {
+  //         fName: prevValue.fName,
+  //         lName: newValue,
+  //         email: prevValue.email
+  //       };
+  //     } else if (nameOfInput === "email") {
+  //       return {
+  //         fName: prevValue.fName,
+  //         lName: prevValue.lName,
+  //         email: newValue
+  //       };
+  //     }
+  //   });
+  // }
   function handleChange(event) {
-    const nameOfInput = event.target.name;
-    const newValue = event.target.value;
+    const { name, value } = event.target;
+
     setContact((prevValue) => {
-      if (nameOfInput === "fName") {
-        return {
-          fName: newValue,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      } else if (nameOfInput === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: newValue,
-          email: prevValue.email
-        };
-      } else if (nameOfInput === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: newValue
-        };
-      }
+      return {
+        ...prevValue,
+        [name]: value
+      };
     });
   }
   return (
