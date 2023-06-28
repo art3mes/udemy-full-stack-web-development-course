@@ -1,18 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 function TodoItem(props) {
-  const [isStiked, strikeHandler] = useState(false);
-  function striker() {
-    strikeHandler((preValue) => {
-      return !preValue;
-    });
-  }
-
   return (
-    <div onClick={striker}>
-      <li style={{ textDecoration: isStiked ? "line-through" : "none" }}>
-        {props.item}
-      </li>
+    <div onClick={()=>{
+      return props.onChecked(props.id)            //only gets called when the above function is called
+    }}>
+      <li>{props.item}</li>
     </div>
   );
 }
