@@ -4,8 +4,7 @@ import Fab from '@mui/material/Fab';
 import Zoom from '@mui/material/Zoom';
 
 function CreateArea(props) {
-    const [note,
-        setNote] = useState({title: "", content: ""});
+    const [note, setNote] = useState({title: "", content: ""});
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -18,7 +17,9 @@ function CreateArea(props) {
         });
     }
     function addNote(event) {
-        props.onAdd(note);
+        if(note.title!==""){
+            props.onAdd(note);
+        }
         setNote({title: "", content: ""});
         event.preventDefault();
     }
